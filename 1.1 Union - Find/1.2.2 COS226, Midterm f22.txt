@@ -1,0 +1,22 @@
+a, 1 thành phần liên thông, ban đầu có n thành phần liên thông tách biệt. Chuỗi thao tác union(0,i) với i chạy từ 1 đến n -1 sẽ lần lượt kết nối phần tử 1, 2,…, n -1 vào một tập hợp chứa phần phần tử 0 tạo thành 1 thành phần liên thông duy nhất.
+b, Thuật toán Quick - find khi thực hiện union(p, q) sẽ duyệt qua toàn bộ mảng và đổi tất cả các phần tử có cùng leader với p thành leader của q.
+- union(0, 1): tập hợp chứa 0 đang có 1 phần tử(chính nó). Phải cập nhật 1 lần.
+- union(0, 2): Tập hợp chứa 0 lúc này đã có 2 phần tử (0 và 1). Phải cập nhật 2 lần.
+...
+- union(0, n-1): Tập hợp chứa 0 đang có n - 1 phần tử. Phải cập nhật n - 1 lần.
+- Tổng 1 + 2 + 3 +...+ (n-1) = n(n-1)/2 = 1/2n^2 - 1/2n.
+c, Số lần truy cập mảng của thao tác find(0) trong Quick-union
+θ(n)
+- Thuật toán Quick-union thông thường thao tác union(p,q) sẽ cho gốc p trỏ tới gốc của q.
+- union(0,1): Gán parent[0] =1.
+- union(0,2): Lúc này gốc của 0 là 1. Thuật toán gán parent[1] =2.
+...
+=> cấu trúc cây trở thằng một đường thẳng dài 0 --> 1 --> 2 --> ... --> n-1.
+- Khi gọi find(0), thuật toán phải duyệt từ 0 qua tất cả các liên kết để tìm lên gốc cuối cùng là n - 1. Quá trình này phải đi qua độ sâu là n, do đó độ phức tạp là θ(n).
+d, Số lần truy cập mảng của thao tác find(0) trong weighted quick-union
+θ(1) do cài đặt của union(p,q) sẽ thay đổi parent[q], gốc của q sẽ trỏ vào gốc của p.
+- union(0,1): Cây 0 (kích thước 1) và cây 1 (kích thước 1). Bằng nhau --> thay đổi parent[1] = 0. Cây gốc 0 lúc này có kích thước là 2.
+- union(0,2): Gốc chứa 0 là chính nó (kích thước 2). Cây 2 có kích thước 1. Vì 1 < 2 nên cây nhỏ (2) nối vào cây lớn (0). parent[2] = 0. Kích thước cây 0 tăng lên 3.
+...
+=> mọi phần tử từ 1 --> n -1 đều được nối vào gốc 0 ==> khi gọi find(0), do 0 chính là gốc (parent[0] = 0) chỉ cần kiểm tra 1 lần truy cập mảng.	
+
