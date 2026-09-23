@@ -1,0 +1,3 @@
+- Hai vòng lặp ngoài: Vòng lặp biến i duyệt từ 0 đến n^2 -1, và vòng lặp biến j duyệt từ i + 1 đến n^2 - 1. Cấu trúc này lặp qua tất cả các cặp có thể có, tương đương với tổ hợp chập 2 của n^2. Tổng số lần thực thi của khối lệnh bên trong hai vòng lặp này là công thức cấp số cộng: n^2(n^2 -1)/2. Khi xét về độ phức tạp tiệm cận, giá tị này xấp xỉ 1/2n^4
+- Vòng lặp trong cùng: Vòng lặp biến k khởi tạo từ 1 và tăng theo cấp số nhân(k = k x 2) cho đến khi vượt quá n^2. Do mỗi bước giá trị của k được nhân đôi, số lần lặp sẽ xấp xỉ log2(n^2). Theo tính chất của logarit, biểu thức này có thể rút gọi thành 2 log2(n)
+=> tổng số lần gọi hàm op() nhân lại với nhau => n^4log2(n)
